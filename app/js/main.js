@@ -140,6 +140,8 @@ changeUserLogin();
 
 logOut();
 
+window.onload = () => modalInput.value = '';
+
 if (sessionStorage.getItem('login') !== '' && sessionStorage.getItem('login') !== null) {
     window.onload = () => {
         showUser();
