@@ -33,13 +33,15 @@ tabsBtn.forEach(tabBtn => tabBtn.addEventListener('click',  e => {
 // Modal
 const   btnLogin = document.querySelector('.btn--login'),
         modal = document.querySelector('.modal'),
-        modalBtn = document.querySelector('.modal__btn'),
-        modalInput = document.querySelector('.modal__body-input-text--login'),
-        user = document.querySelector('.user');
+        modalBtn = modal.querySelector('.modal__btn'),
+        modalInput = modal.querySelector('.modal__body-input-text--login');
+        
 
-const   userNameLast = document.querySelector('.user__name-span'),
-        userNameInput = document.querySelector('.user__name-input'),
-        userNameWrapper = document.querySelector('.user__name-wrapper');
+const   user = document.querySelector('.user'),
+        userNameLast = user.querySelector('.user__name-span'),
+        userNameInput = user.querySelector('.user__name-input'),
+        userNameWrapper = user.querySelector('.user__name-wrapper');
+        
 
 const showModal = () => {
     modal.classList.add('show');
@@ -61,7 +63,7 @@ const userNameChange = () => {
     userNameWrapper.style.display = 'block';
     userNameLast.style.display = 'none';
 };
-const userNameLogOut = () => {
+const userNameSaveChange = () => {
     userNameWrapper.style.display = 'none';
     userNameLast.style.display = 'block';
 };
@@ -70,19 +72,15 @@ function openModal() {
     btnLogin.addEventListener('click', e => {
         e.preventDefault();
         showModal();
-    
+
         modalInput.addEventListener('change', () => {
-            let name = modalInput.value;
-            modalBtn.addEventListener('click', () => {
-                hideModal();
-                showUser();
-                if (name === '') {
-                    userNameLast.textContent = 'user';
-                } else {
+            let name =  modalInput.value;
+                modalBtn.addEventListener('click', () => {
                     userNameLast.textContent = name;
                     sessionStorage.setItem('login', name);
-                }
-            });
+                    hideModal();
+                    showUser();
+                });
         });
     });
     
@@ -103,21 +101,26 @@ function changeUserLogin() {
         userNameChange();
 
         userNameInput.value = sessionStorage.getItem('login');
+        userNameInput.focus();
 
-        userNameInput.addEventListener('blur', () => {
-            let current =  userNameInput.value;
-            if (userNameInput.value === '') {
-                userNameLast.textContent = 'user';
-            } else {
-                userNameLast.textContent = current;
-                sessionStorage.setItem('login', current);
-            }
-            userNameLogOut();
-            
+        userNameInput.addEventListener('focus', () => {
+            userNameInput.addEventListener('change', () => {
+                let name = userNameInput.value;
+                
+                if (userNameInput.value === '') {
+                    sessionStorage.setItem('login', 'user');
+                    userNameLast.textContent = sessionStorage.getItem('login');
+                    userNameInput.blur();
+                    userNameSaveChange();
+                } else {
+                    sessionStorage.setItem('login', name);
+                    userNameLast.textContent =  sessionStorage.getItem('login');
+                    userNameSaveChange();
+                }
+            });
         });
-    });
 
-    
+    });
 }
 
 
