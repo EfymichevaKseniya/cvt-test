@@ -1,5 +1,5 @@
 ## Ссылка на собранный проект:
-https://github.com/Reniary/cvt-test
+https://reniary.github.io/cvt-test/dist/
 
 ###  Инструменты:
 - Gulp
