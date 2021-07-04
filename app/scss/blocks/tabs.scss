@@ -1,0 +1,60 @@
+.tabs {
+    &__nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    &__item {
+        display: none;
+    }
+    &__nav-item {
+        @extend %title-font;
+        font-size: 28px;
+        line-height: 33px;
+
+        cursor: url("../images/cursor-hand.svg"), default;
+
+        position: relative;
+
+        &::after {
+            content: '';
+            width: 100%;
+            height: 2px;
+
+            position: absolute;
+            bottom: -9px;
+            left: 0;
+            background: $red;
+            opacity: 0;
+
+            transition: opacity .3s ease-in-out;
+        }
+
+        &:not(:last-child){
+            margin-right: 24px;
+        }
+    }
+}
+
+.active {
+    color: $red;
+}
+
+.active.tabs__nav-item::after  {
+    opacity: 1;
+}
+
+.tab-on{
+    display: block;
+}
+
+@media (max-width: 320px) {
+    .tabs {
+        &__nav-item {
+            margin-bottom: 30px;
+        }
+    }
+}

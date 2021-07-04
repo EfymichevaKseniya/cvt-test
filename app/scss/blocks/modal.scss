@@ -1,0 +1,71 @@
+/* Modal */
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    background: rgba(28, 24, 47, 0.3);
+    display: flex;
+    justify-content: center;
+    overflow-y: scroll;
+    padding: 12% 15px;
+
+    transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
+
+    &__content {
+        padding: 60px 60px;
+        width: 100%;
+        max-width: 300px;
+        height: 390px;
+        background: $white;
+        border-radius: 8px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+    &__body {
+        display: flex;
+        flex-direction: column;
+    }
+    
+
+    &__header-title {
+        @extend %title-font;
+        margin-bottom: 24px;
+        font-size: 28px;
+        line-height: 33px;
+        text-align: center;
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 auto;
+    }
+
+    &__body-input-text {
+        margin-bottom: 24px;
+        border: none;
+        padding-bottom: 6px;
+        border: none;
+        border-bottom: 1px solid $gray;
+        &::placeholder {
+            color: #828282;
+        }
+    }
+
+    &__checkbox {
+        display: flex;
+    }
+
+    &__footer {
+        flex: 0 0 auto;
+        margin: 0 auto;
+    }
+}
+
+
+
