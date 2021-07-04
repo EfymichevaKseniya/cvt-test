@@ -1,0 +1,132 @@
+html,
+body {
+	height: 100%;
+	font-family: 'Rubik', sans-serif;
+	font-size: 16px;
+	line-height: 19px;
+	font-weight: 400;
+}
+
+a, 
+button {
+	cursor: url("../images/cursor-hand.svg"), default;
+}
+
+.wrapper {       
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+
+.main {
+	flex: 1 0 auto;
+}
+.footer {
+	flex: 0 0 auto;
+}
+
+.container{
+	width: 100%;
+	max-width: 1210px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+
+
+.btn {
+	border: none;
+	background: none;
+	color: $red;
+	cursor: url("../images/cursor-hand.svg"), default;
+	font-weight: 500;
+}
+
+
+.btn--login {
+	padding: 10px 32px; 
+	border: none;
+	background-color: $red;
+	color: $white;
+	border-radius: 4px;
+	&:hover {
+		background: darken($color: $red, $amount: 3);
+	}
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	border: 0;
+	clip: rect(0 0 0 0)
+}
+
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.label {
+	margin-left: 8px;
+	font-weight: 400;
+}
+
+.custom-checkbox {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+}
+
+.custom-checkbox+label {
+	display: inline-flex;
+	align-items: center;
+	user-select: none;
+	cursor: pointer;
+}
+.custom-checkbox+label::before {
+	content: '';
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	flex-shrink: 0;
+	flex-grow: 0;
+	border: 1px solid $gray;
+	border-radius: 0.25em;
+	margin-right: 0.5em;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 50% 50%;
+}
+
+.custom-checkbox:checked+label::before {
+	
+	background-image: url("../images/check.svg");
+	background-size: 10px 8px;
+}
+
+
+/* стили при наведении курсора на checkbox */
+.custom-checkbox:not(:disabled):not(:checked)+label:hover::before {
+	border-color: darken($color: $red, $amount: 7);
+}
+  /* стили для активного состояния чекбокса (при нажатии на него) */
+.custom-checkbox:not(:disabled):active+label::before {
+	background-color: darken($color: $white, $amount: 10);
+	border-color: darken($color: $red, $amount: 7);
+}
+/* стили для чекбокса, находящегося в состоянии disabled */
+.custom-checkbox:disabled+label::before {
+	background-color: #bdbdbd;
+}
+
