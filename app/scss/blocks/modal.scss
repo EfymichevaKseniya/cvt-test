@@ -1,4 +1,3 @@
-/* Modal */
 
 .modal {
     position: fixed;
@@ -10,7 +9,7 @@
     background: rgba(28, 24, 47, 0.3);
     display: flex;
     justify-content: center;
-    overflow-y: scroll;
+    overflow-y: auto;
     padding: 12% 15px;
 
     transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
@@ -26,12 +25,12 @@
         display: flex;
         flex-direction: column;
     }
+
     &__body {
         display: flex;
         flex-direction: column;
     }
     
-
     &__header-title {
         @extend %title-font;
         margin-bottom: 24px;
@@ -46,15 +45,10 @@
         flex: 1 0 auto;
     }
 
-    &__body-input-text {
+    &__body-input {
+        padding-right: 10px;
         margin-bottom: 24px;
-        border: none;
-        padding-bottom: 6px;
-        border: none;
-        border-bottom: 1px solid $gray;
-        &::placeholder {
-            color: #828282;
-        }
+        
     }
 
     &__checkbox {

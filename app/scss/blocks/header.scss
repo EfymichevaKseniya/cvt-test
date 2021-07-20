@@ -1,4 +1,5 @@
 .header {
+
     &__wrapper {
         display: flex;
         padding-top: 34px;
@@ -12,35 +13,25 @@
 .search {
     display: flex;
     align-items: center;
+
     &__input {
         padding-bottom: 6px;
         min-width: 320px;
         margin-right: 32px;
-        border: none;
-        border-bottom: 1px solid $gray;
-        &::placeholder {
-            color: #828282;
-        }
-        
     }
 }
 
 .user {
-    display: none;
     align-items: center;
 
     &__name {
         margin-right: 16px;
         @extend %title-font;
     }
+
     &__name-input {
         padding-right: 20px;
         padding-bottom: 6px;
-        border: none;
-        border-bottom: 1px solid $gray;
-        &::placeholder {
-            color: #828282;
-        }
     }
     &__checkbox-box {
         margin-top: 10px;
@@ -48,12 +39,11 @@
     }
 
     &__name-span {
-        cursor: url("../images/cursor-hand.svg"), default;
+        cursor: pointer;
     }
 
     &__name-wrapper {
         padding-top: 15px;
-        display: none;
     }
 }
 

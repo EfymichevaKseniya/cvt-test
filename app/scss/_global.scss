@@ -9,8 +9,86 @@ body {
 
 a, 
 button {
-	cursor: url("../images/cursor-hand.svg"), default;
+	cursor: pointer;
 }
+
+.input {
+        border: none;
+        padding-bottom: 6px;
+        border: none;
+        border-bottom: 1px solid $gray;
+        font-weight: 500;
+		position: relative;
+		&::after {
+			content: '';
+			width: 100%;
+			max-width: 100px;
+			height: 1px;
+			background: $gray;
+			position: absolute;
+			top: 0;
+			left: 0;
+
+		}
+
+        &::placeholder {
+			transition: color .3s ease-in-out;
+            color: #828282;
+        }
+		
+		&:focus {
+			border-bottom: 2px solid $red;
+		}
+		&:focus.input::placeholder {
+			color: transparent;
+		}
+}
+
+.label {
+	margin-left: 8px;
+	font-weight: 400;
+}
+
+.custom-checkbox {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+
+	& + label {
+		display: inline-flex;
+		align-items: center;
+		user-select: none;
+		cursor: pointer;
+	}
+
+	& + label:before {
+		content: '';
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		flex-shrink: 0;
+		flex-grow: 0;
+		border: 1px solid $gray;
+		border-radius: 0.25em;
+		margin-right: 0.5em;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: 50% 50%;
+	}	
+
+	&:checked + label:before {
+		background-image: url("../images/check.svg");
+		background-size: 10px 8px;
+	}
+	& + label:hover:before {
+		box-shadow: 0 0 0 3px rgba(142,190,198, 0.3);
+	}
+
+	&:focus + label:before {
+		box-shadow: inset 0 2px 3px rgba(0,0,0,.2), 0 0 0 2px rgba(125, 178, 187, 0.5);
+	}
+}
+
 
 .wrapper {       
 	display: flex;
@@ -21,27 +99,25 @@ button {
 .main {
 	flex: 1 0 auto;
 }
+
 .footer {
 	flex: 0 0 auto;
 }
 
-.container{
+.container {
 	width: 100%;
 	max-width: 1210px;
 	margin: 0 auto;
 	padding: 0 15px;
 }
 
-
-
 .btn {
 	border: none;
 	background: none;
 	color: $red;
-	cursor: url("../images/cursor-hand.svg"), default;
+	cursor: pointer;
 	font-weight: 500;
 }
-
 
 .btn--login {
 	padding: 10px 32px; 
@@ -52,6 +128,22 @@ button {
 	&:hover {
 		background: darken($color: $red, $amount: 3);
 	}
+}
+
+
+.long-text {
+	-ms-text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-ms-line-clamp: 2;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	display: -webkit-box;
+	display: box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
+	box-orient: vertical;
 }
 
 .visually-hidden {
@@ -65,69 +157,25 @@ button {
 	clip: rect(0 0 0 0)
 }
 
-
-.hidden {
+.close {
     opacity: 0;
     visibility: hidden;
 	display: none;
 }
 
-.show {
+.open {
     opacity: 1;
     visibility: visible;
 }
 
-
-.label {
-	margin-left: 8px;
-	font-weight: 400;
+.hide {
+	display: none;
 }
 
-.custom-checkbox {
-	position: absolute;
-	z-index: -1;
-	opacity: 0;
+.show {
+	display: block;
 }
 
-.custom-checkbox+label {
-	display: inline-flex;
-	align-items: center;
-	user-select: none;
-	cursor: pointer;
+.show-flex {
+	display: flex;
 }
-.custom-checkbox+label::before {
-	content: '';
-	display: inline-block;
-	width: 1em;
-	height: 1em;
-	flex-shrink: 0;
-	flex-grow: 0;
-	border: 1px solid $gray;
-	border-radius: 0.25em;
-	margin-right: 0.5em;
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: 50% 50%;
-}
-
-.custom-checkbox:checked+label::before {
-	
-	background-image: url("../images/check.svg");
-	background-size: 10px 8px;
-}
-
-
-/* стили при наведении курсора на checkbox */
-.custom-checkbox:not(:disabled):not(:checked)+label:hover::before {
-	border-color: darken($color: $red, $amount: 7);
-}
-  /* стили для активного состояния чекбокса (при нажатии на него) */
-.custom-checkbox:not(:disabled):active+label::before {
-	background-color: darken($color: $white, $amount: 10);
-	border-color: darken($color: $red, $amount: 7);
-}
-/* стили для чекбокса, находящегося в состоянии disabled */
-.custom-checkbox:disabled+label::before {
-	background-color: #bdbdbd;
-}
-

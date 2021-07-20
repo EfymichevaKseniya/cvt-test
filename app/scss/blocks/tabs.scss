@@ -7,15 +7,19 @@
         padding-top: 40px;
         padding-bottom: 40px;
     }
+
     &__item {
         display: none;
     }
+    
     &__nav-item {
         @extend %title-font;
         font-size: 28px;
         line-height: 33px;
+        border: none;
+        background: transparent;
 
-        cursor: url("../images/cursor-hand.svg"), default;
+        cursor: pointer;
 
         position: relative;
 
@@ -43,7 +47,7 @@
     color: $red;
 }
 
-.active.tabs__nav-item::after  {
+.active.tabs__nav-item::after {
     opacity: 1;
 }
 
